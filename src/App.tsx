@@ -1,11 +1,9 @@
-import { FunctionComponent, useState } from "react";
+import { FunctionComponent } from "react";
 interface AppProps {
   message?: string;
 }
 const App: FunctionComponent<AppProps> = ({ message }) => {
-  const [name,setName] = useState<string>("John Doe");
-
-  return <h1>{message}</h1>;
+  return <h1>Hello, World!</h1>;
 }
 
 export default App;
