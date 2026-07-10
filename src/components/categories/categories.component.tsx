@@ -1,25 +1,22 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-import env from "../../config/env.config";
 import Category from "../../types/category.types";
+import env from "../../config/env.config";
 import CategoryItem from "../category-item/category-item.component";
 
 import "./categories.styles.css";
+import { CategoriesContainer, CategoriesContent } from "./categories.styles";
 
 const Categories = () => {
   const [categories, setCategories] = useState<Category[]>([]);
 
   const fetchCategories = async () => {
     try {
-      if (!env.apiUrl) {
-        console.error("REACT_APP_API_URL não foi configurada.");
-        return;
-      }
+      const { data } = await axios.get(`${env.apiUrl}/category`);
 
-      const { data } = await axios.get<Category[]>(`${env.apiUrl}/category`);
-
-      console.log("Categorias recebidas:", data);
+      console.log("API URL:", env.apiUrl);
+      console.log("Resposta da API:", data);
 
       setCategories(data);
     } catch (error) {
@@ -31,16 +28,18 @@ const Categories = () => {
     fetchCategories();
   }, []);
 
+  console.log("Estado:", categories);
+
   return (
-    <div className="categories-container">
-      <div className="categories-content">
+    <CategoriesContainer>
+      <CategoriesContent>
         {categories.map((category) => (
           <div key={category.id}>
             <CategoryItem category={category} />
           </div>
         ))}
-      </div>
-    </div>
+      </CategoriesContent>
+    </CategoriesContainer>
   );
 };
 
