@@ -18,7 +18,7 @@ export const CategoryItemContainer = styled.div<CategoryItemContainerProps>`
   border-radius: 10px;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
   background-color: rgba(0, 0, 0, 0.3);
-  background-blend-mode: color;
+  border: 1px solid ${Colors.primary};
   background-image: ${(props) => `url('${props.$backgroundImage}')`};
 `;
 
