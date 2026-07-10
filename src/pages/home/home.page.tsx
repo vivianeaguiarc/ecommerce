@@ -4,8 +4,9 @@ import Header from "../../components/header/header.component"
 const HomePage = () => {
   return (
     <>
-    <Header />
-    <Categories />
+      <Header />
+      <h1>Teste de renderização</h1>
+      <Categories />
     </>
   )
 }
